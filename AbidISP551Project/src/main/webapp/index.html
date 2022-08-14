@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+<style> 
+input[type=text], input[type=password] { 
+  width: 100%; 
+  padding: 12px 20px; 
+  margin: 8px 0; 
+  display: inline-block; 
+  border: 1px solid #ccc; 
+  box-sizing: border-box; 
+} 
+ 
+button { 
+
+  background-color: grey; 
+  color: white; 
+  padding: 14px 20px; 
+  margin: 8px 0; 
+  border: none; 
+  cursor: pointer; 
+  width: 100%; 
+} 
+ 
+button:hover { 
+  opacity: 0.8; 
+} 
+ 
+ 
+.imgcontainer { 
+  text-align: center; 
+  
+  background: #353c49; 
+} 
+ 
+img.avatar { 
+  width: 40%; 
+  border-radius: 50%; 
+} 
+ 
+.container { 
+  padding: 16px; 
+  background:#7F9C8B ; 
+} 
+ 
+span.psw { 
+  float: right; 
+  
+} 
+ 
+/* Change styles for span and cancel button on extra small screens */ 
+@media screen and (max-width: 300px) { 
+  span.psw { 
+    
+     float: none; 
+  } 
+ 
+} 
+.grid-container { 
+  display: grid; 
+  grid-template-columns: auto auto ; 
+  background-color: white; 
+  height: 100%; 
+   
+} 
+ 
+.grid-container > div { 
+  background-color: white; 
+  text-align: center; 
+  padding: 20px 0; 
+  font-size: 30px; 
+  height: 100%; 
+} 
+.item1 { 
+ 
+  grid-row-start: 1; 
+  grid-row-end: 1; 
+} 
+.item1 { 
+ 
+ height: 500px; 
+} 
+</style> 
+</head> 
+<body> 
+ 
+ 
+<div class="grid-container"> 
+ 
+ <div class="item1"> 
+<form> 
+  <div class="imgcontainer"> 
+    <img src="./assets/masjidjamek.jpg" style="width:550px;height:900px;"> 
+  </div> 
+</div> 
+<div class="item1"> 
+  <div class="container"> 
+  <img class="logo" alt="" src="./assets/logo.jpeg" style="width:170px;border-radius: 50%;"> 
+  <p style="font-size:30px;font-family:Georgia,serif;text-align: center;color:white;">Masjid Jamek Gelang Patah</p> 
+          <br> 
+          <p style="text-align: center;color:white;font-size:15px;">Gelang Patah Jamek Mosque. It was completed on February 28,2016. It was located in the Jalan Mentimun, Gelang
+                        patah, the name given by the First Menteri Besar of Johor, Dato "Jaafar Muhammad.Other than
+                        that, the mosque has a capacity for 2,500 peopl before renovation. The facilities that available are funeral
+                        service, office, tazkirah and lecture program fro people in that area. The mosque needed RM 1 million to cover the cost
+                        of renovation on June 3,2017 to make a capacity even larger about 5,000 people. The mosque became a center
+                        of worship for the community in Gelang Patah,Johor</p>
+
+    <br> 
+    <form action=""> 
+    <input style="width:100px;margin-right:60px; background-color:#C3C6C8; padding:10px 16px; cursor: pointer; text-align:center;" onclick="window.location='loginadmin.jsp'" value="Admin login"> 
+    <input style="width:100px;margin-left:95px; background-color:#C3C6C8; padding:10px 16px; cursor: pointer; text-align:center;" onclick="window.location='loginmember.jsp'" value="Member login"> 
+    </form> 
+    
+    <div class="item1"> 
+  <div class="container"> 
+ </div> 
+</div> 
+</form> 
+  </div> 
+</html>
