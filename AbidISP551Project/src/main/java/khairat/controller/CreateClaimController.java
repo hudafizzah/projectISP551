@@ -51,7 +51,7 @@ public class CreateClaimController extends HttpServlet {
 		dao.applicationClaim(c);
 		
 		//set an upload path of file
-		String uploadPath = "C:/Users/Admin/git/FINAL2_KHAIRAT_PROJECT/AbidISP551Project/src/main/webapp/deathcertificateimg" + file.getSubmittedFileName();
+		String uploadPath = "C:/Users/user/git/projectISP551/AbidISP551Project/src/main/webapp/deathcertificateimg" + file.getSubmittedFileName();
 		System.out.println("Upload Path : "+uploadPath);
 		
 		//uploading selected file into folder

@@ -11,6 +11,7 @@ if(session.getAttribute("currentSessionUser")==null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -85,21 +86,6 @@ body {
     top: 0px;
     transform: translate(-12px, 14px);
   }
-  .nav > .nav-btn > label {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    padding: 13px;
-  }
-  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  .nav > .nav-btn > label > span {
-    display: block;
-    width: 25px;
-    height: 10px;
-    border-top: 2px solid #eee;
-  }
   .nav > .nav-links {
     position: absolute;
     display: block;
@@ -127,13 +113,10 @@ body {
   }
 }
 .top-nav{
-
-                background-color: rgba(0,0,0, 0.9);
-                color: white;
-                flex-flow: row wrap;
-
-            }
-
+       background-color: rgba(0,0,0, 0.9);
+       color: white;
+       flex-flow: row wrap;
+ }
 button{
   background-color:#6b9bd1;
   border: none;
@@ -146,7 +129,7 @@ button{
 
 }
 
-/*form{
+form{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -160,11 +143,44 @@ button{
   font-family: verdana;
    font-size: 20px;
 
-}*/
-h1{
+}
+h2{
    text-align: center;
 }
+label {
+        display: inline-block;
+        width: 250px;
+      
+      }
+input {
+        padding: 13px 60px;
+        width:100%
+        margin:5px 0 22px 0;
+        display:inline- block;
+        border:none;
+        background: #f1f1f1;
+      }
+      
+input[type=button], input[type=submit] {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 5px 2px;
+  cursor: pointer;
+}
 
+
+input[type=button], input[type=reset]{
+  background-color:#DC7633;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 5px 2px;
+  cursor: pointer;
+}
 .col-span-25{
 	float:left;
 	width:25%;
@@ -191,9 +207,8 @@ h1{
 }
 
 </style>
-<head>
 <meta charset="UTF-8">
-<title>Create Member</title>
+<title>Register Member</title>
 </head>
 <body>
  <!-- Responsive navbar-->
@@ -201,68 +216,60 @@ h1{
               <input type="checkbox" id="nav-check">
               <div class="nav-header">
                 <div class="nav-title d-flex align-items-center">
-                  <p class="mb-brand">Home Admin</p>
+                  <p class="mb-brand">Register Member</p>
                 </div>
               </div>
-              <div class="nav-btn">
-                <label for="nav-check">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </label>
-              </div>
+            
               
               <div class="nav-links">
-                <a href="ManageProfileAdminController">Manage Profile</a>  
-                <a href= " createmember.jsp">Register New Member</a>  
+                <a href="ManageProfileAdminController">Manage Profile</a>   
                 <a href= "ListMemberController">List Member</a>  
                 <a href= "ListPaymentController">List Online Payment</a> 
                 <a href="ListPaymentController2">List Cash Payment</a>
                 <a href="ListClaimController">List of Application Claim</a>
-                <a href = "ViewAdminController2">BACK</a>
                 <a href="LogoutAdminController">Logout</a> 
+                <a href = "ViewAdminController2">BACK</a>
                 <a></a>
                  <a></a>
               </div>
         </div>
 
-	<h1>Create Member</h1><br>
-	<form action="CreateMemberController" method="post">
+	<form style= "padding:50px 50px 50px 50px; text-align:left;" action="CreateMemberController" method="post">
 		<table>
 			<tbody>
                    <tr>
-                       <th><label for="fullname">Full Name</label></th>
-                       <th><input type="text"  name="mem_name" placeholder="FULLNAME CAPITAL LETTER"></th>
+                       <th id="col-span-25"><label for="fullname">Full Name</label></th>
+                       <th id="col-span-75"><input type="text"  name="mem_name" placeholder="FULLNAME CAPITAL LETTER"></th>
                    </tr>
                    <tr>
-                       <th><label for="memIC">IC Number</label></th>
-                       <th><input type="text"  name="mem_icnum" placeholder="000000000000-NO DASH"></th>
+                       <th id="col-span-25"><label for="memIC">IC Number</label></th>
+                       <th id="col-span-75"><input type="text"  name="mem_icnum" placeholder="000000000000-NO DASH"></th>
                    </tr>
                    <tr>
-                       <th><label for="age">Age</label></th>
-                       <th><input type="number"  name="mem_age"></th>
+                       <th id="col-span-25"><label for="age">Age</label></th>
+                       <th id="col-span-75"><input type="number"  name="mem_age"></th>
                    </tr>
                    
                    <tr>
-                       <th><label for="address">Address</label></th>
-                       <th><input type="text"  name="mem_address"></th>
+                       <th id="col-span-25"><label for="address">Address</label></th>
+                       <th id="col-span-75"><input type="text"  name="mem_address"></th>
                        
                    </tr>
                    <tr>
-                       <th><label for="phoneNumber">Phone Number</label></th>
-                       <th><input type="text"  name="mem_phonenum" placeholder="000-00000000"></th>
+                       <th id="col-span-25"><label for="phoneNumber">Phone Number</label></th>
+                       <th id="col-span-75"><input type="text"  name="mem_phonenum" placeholder="000-00000000"></th>
                    </tr>
                    <tr>
-                       <th><label for="repName">Representative Name</label></th>
-                       <th><input type="text"  name="repname" placeholder="FULLNAME CAPITAL LETTER"></th>
+                       <th id="col-span-25"><label for="repName">Representative Name</label></th>
+                       <th id="col-span-75"><input type="text"  name="repname" placeholder="FULLNAME CAPITAL LETTER"></th>
                    </tr>
                    <tr>
-                       <th><label for="repIC">Representative IC Number</label></th>
-                       <th><input type="text"  name="repnum" placeholder="000000000000-NO DASH"></th>
+                       <th id="col-span-25"><label for="repIC">Representative IC Number</label></th>
+                       <th id="col-span-75"><input type="text"  name="repnum" placeholder="000000000000-NO DASH"></th>
                    </tr>
                    <tr>
-                       <th><label for="memEmail">Email</label></th>
-                       <th><input type="email"  name="mem_email" placeholder="abc@gmail.com"></th>
+                       <th id="col-span-25"><label for="memEmail">Email</label></th>
+                       <th id="col-span-75"><input type="email"  name="mem_email" placeholder="abc@gmail.com"></th>
                    </tr>
               
 			</tbody>

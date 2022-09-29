@@ -12,6 +12,7 @@ if(session.getAttribute("currentSessionUser")==null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -21,10 +22,7 @@ if(session.getAttribute("currentSessionUser")==null)
 body {
   margin: 0px;
   font-family: 'Arial','Verdana';
-
-
 }
-
 .nav {
   padding: 0px 20px;
   display: flex;
@@ -87,21 +85,6 @@ body {
     top: 0px;
     transform: translate(-12px, 14px);
   }
-  .nav > .nav-btn > label {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    padding: 13px;
-  }
-  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  .nav > .nav-btn > label > span {
-    display: block;
-    width: 25px;
-    height: 10px;
-    border-top: 2px solid #eee;
-  }
   .nav > .nav-links {
     position: absolute;
     display: block;
@@ -129,12 +112,10 @@ body {
   }
 }
 .top-nav{
-
-                background-color: rgba(0,0,0, 0.9);
-                color: white;
-                flex-flow: row wrap;
-
-            }
+ background-color: rgba(0,0,0, 0.9);
+ color: white;
+flex-flow: row wrap;
+}
 input[type=button], input[type=submit] {
   background-color: #04AA6D;
   border: none;
@@ -156,13 +137,10 @@ button{
   cursor: pointer;
 }
 
-
 .footer {
-
   padding: 0.1px;
-
   text-align: center;
-    position: fixed;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -171,7 +149,7 @@ button{
   text-align: center;
 }
 table {
-  border-collapse: collapse;
+
   background-color: white;
   overflow: hidden;
   width: %;
@@ -214,6 +192,7 @@ th {
    font-size: 14px;
     margin-right: 5px;
 }
+
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
 .btn-delete{
   background-color: #d6524b;
@@ -240,9 +219,9 @@ th {
         }
 </style>
 
-<head>
+
 <meta charset="UTF-8">
-<title>View List Member</title>
+<title> List Member</title>
 </head>
 <body>
  <!-- Responsive navbar-->
@@ -253,26 +232,17 @@ th {
                   <p class="mb-brand">Member List</p>
                 </div>
               </div>
-              <div class="nav-btn">
-                <label for="nav-check">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </label>
-              </div>
               
                <div class="nav-links">
                 <a href="ManageProfileAdminController">Manage Profile</a>  
-                <a href="createmember.jsp">Register New Member</a>  
-                <a href="ListMemberController">List Member</a>  
+                <a href="createmember.jsp">Register New Member</a>   
                 <a href= "ListPaymentController">List Online Payment</a> 
                 <a href="ListPaymentController2">List Cash Payment</a>
                 <a href="ListClaimController">List of Application Claim</a>
-                <a href ="ViewAdminController2">BACK</a>
                 <a href="LogoutAdminController">Logout</a> 
+                <a href ="ViewAdminController2">BACK</a>
                 <a></a>
                 <a></a>
-
               </div>
         </div>
         <form action="SearchMemberController" method=get>
@@ -280,7 +250,6 @@ th {
         <input type=submit value=search >
         </form>
        
-        
          <form style="padding:50px 50px 50px 50px; text-align:center;">
 		<table border="1">
 			<tr>
@@ -312,12 +281,25 @@ th {
 							
 				<td><a class="btn-view" href="ViewMemberController?memberid=<c:out value="${m.memberid}"/>">View</a></td>
 				<td><a class="btn-update" href="UpdateMemberController?memberid=<c:out value="${m.memberid}"/>">Update</a></td>
-				<td><a class="btn-delete" href="DeleteMemberController?memberid=<c:out value="${m.memberid}"/>">Delete</a></td>
+				<td><a class="btn-delete" href="DeleteMemberController?memberid=<c:out value="${m.memberid}"/>"onclick= "confirmation(this.id)">Delete</a></td>
 				
 			</tr>
 			</c:forEach>
 	    
 		</table>
+		
+		<script>
+		function confirmation(id) {
+			console.log(id);
+			var r = confirm("Are you sure you want to delete?");
+			if (r == true) {
+				location.href = 'DeleteMemberController?memberid=' + id;
+				alert("Member successfully deleted");
+			} else {
+				return false;
+			}
+		}
+		</script>
 	    </form>
 		
 		  <footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>

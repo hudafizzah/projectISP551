@@ -147,6 +147,9 @@ input[type=button], input[type=submit] {
   margin: 4px 2px;
   cursor: pointer;
 }
+input[type=file]{
+color:blue;
+}
 
 
 input[type=button], input[type=reset]{
@@ -169,12 +172,6 @@ input[type=button], input[type=reset]{
   box-sizing: border-box;
   box-shadow: 0 15px 25px rgba(0,0,0,.6);
   border-radius: 10px;
-}
-.box h2{
- margin: 0 0 30px;
-  padding: 0;
-  color: #fff;
-  text-align: center;
 }
 
 .col-span-25{

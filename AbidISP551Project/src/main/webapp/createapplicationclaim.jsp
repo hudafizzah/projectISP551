@@ -148,6 +148,41 @@ input[type=button], input[type=submit] {
   cursor: pointer;
 }
 
+input[type=button], input[type=reset]{
+  background-color:#DC7633;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+table {
+
+  background-color: white;
+  overflow: hidden;
+  width: %;
+  border-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  min-height: 10px;
+  border: solid 1px black;
+  text-align:center;
+}
+
+th, td {
+  font-family:'Motnserrat',sans-serif;
+  text-align: left;
+  font-size: 16px;
+  padding: 10px;
+}
+
+th {
+  background-color: #7691ab;
+  color: white;
+}
+
+
 button{
   background-color:#6b9bd1;
   border: none;
@@ -159,7 +194,8 @@ button{
   text-align:center;
 
 }
-/*form{
+
+form{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -173,21 +209,9 @@ button{
   font-family: verdana;
    font-size: 20px;
 
-}*/
+}
 h1{
    text-align: center;
-}
-
-.col-span-25{
-	float:left;
-	width:25%;
-	margin-top:6px;
-}
-
-.col-span-75{
-	float:left;
-	width:75%;
-	margin-top:6px;
 }
 
 
@@ -239,7 +263,7 @@ h1{
               </div>
         </div>	
 	<h1>Claim appplication form</h1>
-	<form action="CreateClaimController" method="post" enctype="multipart/form-data">
+	<form style= "padding:50px 50px 50px 50px; text-align:center;" action="CreateClaimController" method="post" enctype="multipart/form-data">
 		<table>
 			<tbody>
 				<tr>

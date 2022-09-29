@@ -13,6 +13,7 @@ if (session.getAttribute("currentSessionUser") == null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -125,17 +126,33 @@ body {
   .nav > #nav-check:checked ~ .nav-links {
     height: calc(100vh - 80px);
     overflow-y: auto;
-    z-index: 2;
-  }
+    z-index: 2;}
 }
 .top-nav{
+background-color: rgba(0,0,0, 0.9);
+color: white;
+flex-flow: row wrap;
+}
 
-                background-color: rgba(0,0,0, 0.9);
-                color: white;
-                flex-flow: row wrap;
+input[type=button], input[type=submit] {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 
-            }
-
+input[type=button], input[type=reset]{
+  background-color:#DC7633;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
 button{
   background-color:#6b9bd1;
   border: none;
@@ -147,40 +164,7 @@ button{
   text-align:center;
 
 }
-
-/*form{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  background: white;
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  border-radius: 10px;
-  font-family: verdana;
-   font-size: 20px;
-
-}*/
-h1{
-   text-align: center;
-}
-
-.col-span-25{
-	float:left;
-	width:25%;
-	margin-top:6px;
-}
-
-.col-span-75{
-	float:left;
-	width:75%;
-	margin-top:6px;
-}
-
 .footer {
-
   padding: 0.1px;
   text-align: center;
   position: fixed;
@@ -193,7 +177,6 @@ h1{
 }
 
 </style>
-<head>
 <meta charset="UTF-8">
 <title>Manage Supervisor Profile</title>
 </head>
@@ -215,18 +198,15 @@ h1{
               </div>
               
               <div class="nav-links">
-              
-              <a href="ManageProfileSupervisorController">Manage Profile</a>  
               <a href="createadmin.jsp">Register New Admin</a><br>
               <a href= "ListAdminController">List Of Admin</a>
               <a href="LogoutAdminController">Logout</a> 
               <a href= "ViewSupervisorController">Back</a>
-                <a></a>
-                <a></a>
+              <a></a>
+              <a></a>
               </div>
         </div>
 	
-	<a href = "ViewSupervisorController">BACK</a><br><br>
 	<h1>MANAGE PROFILE</h1>
 	<form action="ManageProfileSupervisorController?action=update_profile" method="post">
 		<table>

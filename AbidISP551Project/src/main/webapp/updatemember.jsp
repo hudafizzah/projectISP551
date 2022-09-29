@@ -78,21 +78,6 @@ body {
     top: 0px;
     transform: translate(-12px, 14px);
   }
-  .nav > .nav-btn > label {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    padding: 13px;
-  }
-  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  .nav > .nav-btn > label > span {
-    display: block;
-    width: 25px;
-    height: 10px;
-    border-top: 2px solid #eee;
-  }
   .nav > .nav-links {
     position: absolute;
     display: block;
@@ -146,7 +131,30 @@ input[type=button], input[type=reset]{
   margin: 4px 2px;
   cursor: pointer;
 }
+form{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: auto;
+  padding: 40px;
+  transform: translate(-50%, -50%);
+  background: white;
+  box-sizing: border-box;
+  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  border-radius: 10px;
+  font-family: verdana;
+   font-size: 20px;
 
+}
+
+  label {
+        display: inline-block;
+        width: 250px;
+      
+      }
+      input {
+        padding: 5px 10px;
+      }
 
 .footer {
 
@@ -161,6 +169,11 @@ input[type=button], input[type=reset]{
   color: white;
   text-align: center;
 }
+
+  .form {
+        margin-bottom: 20px;
+          border-bottom: double;
+      }
 
 </style>
 
@@ -186,40 +199,43 @@ input[type=button], input[type=reset]{
               
               <div class="nav-links">
                 <a href="ManageProfileAdminController">Manage Profile</a>  
-                <a href= " paymentmethod.jsp">Make Payment</a>  
-                <a href = "CreateClaimController">Claim Khairat</a>
-                <a href = "LogoutMemberControlller">Log out</a>
-                <a href = "paymentmethod.jsp">Log out</a>
-                <a></a>  
-                <a></a>  
+                <a href="createmember.jsp">Register New Member</a>   
+                <a href= "ListPaymentController">List Online Payment</a> 
+                <a href="ListPaymentController2">List Cash Payment</a>
+                <a href="ListClaimController">List of Application Claim</a>
+                <a href="LogoutAdminController">Logout</a> 
+                <a href ="ListMemberController">BACK</a>
+                <a></a>
+                <a></a>
+               
 
               </div>
         </div>
 	
 	<form action="UpdateMemberController" method="post" style= "padding:50px 50px 50px 50px; text-align:auto;">
+		<div class= "form">
+		<label>Member ID</label> :&nbsp; ${m.memberid} <br>
+		<label>Member IC Number</label> :&nbsp; ${m.mem_icnum} <br>
+		<label>Member Name</label> :&nbsp;${m.mem_name}<br>
+		</div>
 		
-		Member ID: ${m.memberid} <br>
-		
-		Member IC Number: ${m.mem_icnum} <br>
-		
-		Member Name: ${m.mem_name}<br>
-		
-		Member Age:
+		<label >Member Age</label>:&nbsp;
 		<input type="number" name="mem_age" value="<c:out value="${m.mem_age}"/>"/><br>
-		Member Address:
-		<input type="text" name="mem_address" value="<c:out value="${m.mem_address}"/>"/><br>
-		Member Email:
+		<label>Member Address</label>:&nbsp;
+		<input type="text" name="mem_address" id= "col-span-75" value="<c:out value="${m.mem_address}"/>"/><br>
+		<label>Member Email</label>:&nbsp;
 		<input type="text" name="mem_email" value="<c:out value="${m.mem_email}"/>"/><br>
-		Member Phone Number: 
+		<label>Member Phone Number</label>:&nbsp;
 		<input type="text" name="mem_phonenum" value="<c:out value="${m.mem_phonenum}"/>"/><br>
-		Representative Name: 
+		<label>Representative Name</label>:&nbsp;
 		<input type="text" name="repname" value="<c:out value="${m.repname}"/>"/><br>
-		Representative Number: 
+		<label>Representative Number</label>:&nbsp;
 		<input type="text" name="repnum" value="<c:out value="${m.repnum}"/>"/>
 		<input type="hidden" name="memberid" value="<c:out value="${m.memberid}"/>"/><br><br>
 		
 		<input type="submit" value="Submit"/>
 		<input type="reset" value="Reset"/>
+	
 
 	</form>
 	

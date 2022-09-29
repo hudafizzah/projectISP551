@@ -14,6 +14,7 @@ if (session.getAttribute("currentSessionUser") == null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -159,7 +160,6 @@ input[type=button], input[type=reset]{
 .footer {
 
   padding: 0.1px;
-
   text-align: center;
     position: fixed;
   left: 0;
@@ -182,7 +182,6 @@ button{
 .footer {
 
   padding: 0.1px;
-
   text-align: center;
     position: fixed;
   left: 0;
@@ -193,7 +192,6 @@ button{
   text-align: center;
 }
 </style>
-<head>
 <meta charset="UTF-8">
 <title>Manage Profile</title>
 </head>
@@ -214,14 +212,14 @@ button{
                 </label>
               </div>
               
-              <div class="nav-links">
-                <a href="ManageProfileSupervisorController">Manage Profile</a>  
+              <div class="nav-links"> 
                 <a href= " createmember.jsp">Register New Member</a>  
                 <a href= "ListMemberController">List Member</a>  
                 <a href= "ListPaymentController">List Online Payment</a> 
                 <a href= "ListPaymentController2">List Cash Payment</a>  
                 <a href= "ListClaimController">List of Application</a>  
                 <a href= "LogoutAdminController">Log out</a>  
+                <a href = "ViewAdminController2">BACK</a>
                 <a></a>
      
               </div>
@@ -339,4 +337,5 @@ button{
       
       </script>
 </body>
+<footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
 </html>

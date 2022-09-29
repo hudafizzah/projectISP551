@@ -12,6 +12,7 @@ if(session.getAttribute("currentSessionUser")==null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -145,7 +146,6 @@ input[type=button], input[type=submit] {
   cursor: pointer;
 }
 
-
 button{
   background-color:#DC7633;
   border: none;
@@ -156,13 +156,10 @@ button{
   cursor: pointer;
 }
 
-
 .footer {
-
   padding: 0.1px;
-
   text-align: center;
-    position: fixed;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -199,26 +196,6 @@ th {
   color: white;
 }
 
-.btn-view{
-  background-color: gray;
-  color: white;
-  cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 8px;
-  font-size: 14px;
-  margin-right: 5px;
-}
-
-.btn-update{
-  background-color:#37cc53;
-  cursor: pointer;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-   font-size: 14px;
-    margin-right: 5px;
-}
-
 .btn-delete{
   background-color: #d6524b;
   color: white;
@@ -229,21 +206,16 @@ th {
     margin-right: 5px;
 }
 
-  .hint{
-
-            border-radius: 10px;
-            background-color: black; 
-            padding: 15px 15px;
-
-        }
-
-        .hint p{
-
-            margin-bottom: 10px;
-
-        }
+.hint{
+border-radius: 10px;
+background-color: black; 
+padding: 15px 15px;
+}
+ .hint p{
+margin-bottom: 10px;
+}
 </style>
-<head>
+
 <meta charset="UTF-8">
 <title>View List Cash Payment</title>
 </head>
@@ -292,13 +264,26 @@ th {
 				<td><c:out value="${p.payment_date}"/></td>
 				<td><c:out value="RM${p.payment_amount}"/></td>
 				<td><c:out value="${p.memberid}"/></td>
-				<td><a class="btn-delete" href="DeleteCashPaymentController?paymentid=<c:out value="${p.paymentid}"/>">Payment receive</a></td>
+				<td><a class="btn-delete" href="DeleteCashPaymentController?paymentid=<c:out value="${p.paymentid}"/>"onclick= "confirmation(this.id)">Payment receive</a></td>
 			
 		</tr>
 		</c:forEach>
 		
 		
 	</table>
+	
+		<script>
+		function confirmation(id) {
+			console.log(id);
+			var r = confirm("Are you sure you want to delete?");
+			if (r == true) {
+				location.href = 'DeleteCashPaymentController?paymentid=' + id;
+				alert("Cash Payment successfully deleted");
+			} else {
+				return false;
+			}
+		}
+		</script>
 	
 	</form>
 	 <footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>	

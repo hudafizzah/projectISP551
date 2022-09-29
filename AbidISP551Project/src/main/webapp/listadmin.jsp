@@ -12,6 +12,7 @@ if(session.getAttribute("currentSessionUser")==null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -86,7 +87,7 @@ body {
     top: 0px;
     transform: translate(-12px, 14px);
   }
-  .nav > .nav-btn > label {
+    .nav > .nav-btn > label {
     display: inline-block;
     width: 50px;
     height: 50px;
@@ -128,12 +129,21 @@ body {
   }
 }
 .top-nav{
-
-                background-color: rgba(0,0,0, 0.9);
-                color: white;
-                flex-flow: row wrap;
+ background-color: rgba(0,0,0, 0.9);
+ color: white;
+ flex-flow: row wrap;
 
             }
+input[type=button], input[type=submit] {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
 
 button{
   background-color:#6b9bd1;
@@ -146,38 +156,72 @@ button{
   text-align:center;
 
 }
+table {
 
-/*form{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  background: white;
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
+  background-color: white;
+  overflow: hidden;
+  width: %;
   border-radius: 10px;
-  font-family: verdana;
-   font-size: 20px;
-
-}*/
-h1{
-   text-align: center;
+  justify-content: center;
+  align-items: center;
+  min-height: 10px;
+  border: solid 1px black;
+  text-align:center;
 }
 
-.col-span-25{
-	float:left;
-	width:25%;
-	margin-top:6px;
+th, td {
+  font-family:'Motnserrat',sans-serif;
+  text-align: left;
+  font-size: 16px;
+  padding: 10px;
 }
 
-.col-span-75{
-	float:left;
-	width:75%;
-	margin-top:6px;
+th {
+  background-color: #7691ab;
+  color: white;
+}
+.btn-view{
+  background-color: gray;
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 14px;
+  margin-right: 5px;
 }
 
+.btn-update{
+  background-color:#37cc53;
+  cursor: pointer;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 8px;
+   font-size: 14px;
+    margin-right: 5px;
+}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
+.btn-delete{
+  background-color: #d6524b;
+  color: white;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 8px;
+   font-size: 14px;
+    margin-right: 5px;
+}
+ .hint{
+
+            border-radius: 10px;
+            background-color: black; 
+            padding: 15px 15px;
+
+        }
+
+        .hint p{
+
+            margin-bottom: 10px;
+
+        }
 .footer {
 
   padding: 0.1px;
@@ -190,9 +234,8 @@ h1{
   color: white;
   text-align: center;
 }
-
 </style>
-<head>
+
 <meta charset="UTF-8">
 <title>List Admin</title>
 </head>
@@ -202,10 +245,10 @@ h1{
               <input type="checkbox" id="nav-check">
               <div class="nav-header">
                 <div class="nav-title d-flex align-items-center">
-                  <p class="mb-brand">Create Admin</p>
+                  <p class="mb-brand">Admin List</p>
                 </div>
               </div>
-              <div class="nav-btn">
+               <div class="nav-btn">
                 <label for="nav-check">
                   <span></span>
                   <span></span>
@@ -216,13 +259,14 @@ h1{
               <div class="nav-links">
                 <a href="ManageProfileSupervisorController">Manage Profile</a>  
                 <a href="createadmin.jsp">Register New Admin</a><br>
-                <a href= "ListAdminController">List Of Admin</a>
                 <a href="LogoutAdminController">Logout</a> 
                 <a href= "ViewSupervisorController">Back</a>
                 <a></a>
                 <a></a>
               </div>
         </div>
+
+         <form style="padding:50px 50px 50px 50px; text-align:center;">
 		<table border="1">
 			<tr>
 				<th>Admin ID</th>
@@ -250,24 +294,25 @@ h1{
 			   
 				<td><a class=" btn-view" href="ViewAdminController?adminid=<c:out value="${a.adminid}"/>">View</a></td>
 				<td><a class=" btn-update" href="UpdateAdminController?adminid=<c:out value="${a.adminid}"/>">Update</a></td>
-				<td><a class=" btn-delete" href="DeleteAdminController?adminid=<c:out value="${a.adminid}"/>">Delete</a></td>
+				<td><a class=" btn-delete" href="DeleteAdminController?adminid=<c:out value="${a.adminid}"/>" onclick= "confirmation(this.id)">Delete</a></td>
 				
 			</tr>
 			</c:forEach>
 		</table>
 		
-		<!-- <script>
+		<script>
 		function confirmation(id) {
 			console.log(id);
 			var r = confirm("Are you sure you want to delete?");
 			if (r == true) {
-				location.href = 'deletemembercontroller?memberid=' + id;
-				alert("Member successfully deleted");
+				location.href = 'DeleteAdmincontroller?adminid=' + id;
+				alert("Admin successfully deleted");
 			} else {
 				return false;
 			}
 		}
-		</script> -->	
+		</script>	
+		</form>
 	
 </body>
 <footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>

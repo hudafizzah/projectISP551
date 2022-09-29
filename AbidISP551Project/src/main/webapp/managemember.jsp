@@ -14,6 +14,7 @@ if (session.getAttribute("currentSessionUser") == null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -146,53 +147,29 @@ input[type=button], input[type=submit] {
   cursor: pointer;
 }
 
-button{
-  background-color:#6b9bd1;
+input[type=button], input[type=reset]{
+  background-color:#DC7633;
   border: none;
   color: white;
   padding: 10px 30px;
   text-decoration: none;
-  margin: auto;
+  margin: 4px 2px;
   cursor: pointer;
-  text-align:center;
-
-}
-form{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: auto;
-  padding: 40px;
-  transform: translate(-50%, -50%);
-  background: white;
-  box-sizing: border-box;
-  box-shadow: 0 15px 25px rgba(0,0,0,.6);
-  border-radius: 10px;
-  font-family: verdana;
-   font-size: 20px;
-
-}
-h1{
-   text-align: center;
 }
 
-.col-span-25{
-	float:left;
-	width:25%;
-	margin-top:6px;
+button{
+  background-color:#DC7633;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
 }
-
-.col-span-75{
-	float:left;
-	width:75%;
-	margin-top:6px;
-}
-
 
 .footer {
 
   padding: 0.1px;
-
   text-align: center;
     position: fixed;
   left: 0;
@@ -202,9 +179,7 @@ h1{
   color: white;
   text-align: center;
 }
-
 </style>
-<head>
 <meta charset="UTF-8">
 <title>Manage Member Profile</title>
 </head>
@@ -214,17 +189,10 @@ h1{
               <input type="checkbox" id="nav-check">
               <div class="nav-header">
                 <div class="nav-title d-flex align-items-center">
-                  <p class="mb-brand">Home Member</p>
+                  <p class="mb-brand">Manage Profile</p>
                 </div>
               </div>
-              <div class="nav-btn">
-                <label for="nav-check">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </label>
-              </div>
-              
+      
                <div class="nav-links">
                 <a href="ManageProfileMemberController">Manage Profile</a>  
                 <a href= " paymentmethod.jsp">Make Payment</a>  
@@ -361,6 +329,6 @@ h1{
       
       </script>
       
-      	<footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
+     
 </body>
 </html>

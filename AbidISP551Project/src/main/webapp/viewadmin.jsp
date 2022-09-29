@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -138,7 +139,7 @@ button{
 
 }
 
-/*form{
+form{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -152,7 +153,7 @@ button{
   font-family: verdana;
    font-size: 20px;
 
-}*/
+}
 h1{
    text-align: center;
 }
@@ -181,11 +182,10 @@ h1{
   color: white;
   text-align: center;
 }
-
 </style>
-<head>
+
 <meta charset="UTF-8">
-<title>Admin Info</title>
+<title> View Admin</title>
 </head>
 <body>
  <!-- Responsive navbar-->
@@ -193,7 +193,7 @@ h1{
               <input type="checkbox" id="nav-check">
               <div class="nav-header">
                 <div class="nav-title d-flex align-items-center">
-                  <p class="mb-brand">Create Admin</p>
+                  <p class="mb-brand">View Profile</p>
                 </div>
               </div>
               <div class="nav-btn">
@@ -214,17 +214,52 @@ h1{
                 <a></a>
               </div>
         </div>
-	<a href="ListAdminController">List of Admin</a><br><br>
+        
+      <form style= "padding:50px 50px 50px 50px; text-align:auto;">	
 	<h1>Member Information</h1>
-	Admin ID: <c:out value="${a.adminid}"/> <br>
-	Admin Name: <c:out value="${a.add_name}"/> <br>
-	Admin IC Number: <c:out value="${a.admin_icnum}"/> <br>
-	Member Age: <c:out value="${a.add_age}"/> <br>
-	Member Email: <c:out value="${a.add_email}"/> <br>
-   	Phone Number: <c:out value="${a.add_phonenum}"/> <br>
-	Member password: <c:out value="${a.add_password}"/> <br>
-	Supervisor ID: <c:out value="${a.supervisorid}"/> <br>
-</body>
-
+     	<table>
+		<tr>
+			<td id="col-span-25">Admin ID</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.adminid}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Admin Name</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_name}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Admin IC Number</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.admin_icnum}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Member Age</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_age}"/>&nbsp;years old</td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Member Email</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_email}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Phone Number</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_phonenum}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Member password</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_password}"/></td>
+		</tr>
+		<tr>
+			<td id="col-span-25">Supervisor ID</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.supervisorid}"/></td>
+		</tr>
+	
+	</table>
+	<br></br>
+	</form>
 	<footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
+</body>
 </html>

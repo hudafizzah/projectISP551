@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -137,7 +138,7 @@ button{
 
 }
 
-/*form{
+form{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -151,9 +152,44 @@ button{
   font-family: verdana;
    font-size: 20px;
 
-}*/
+}
 h1{
    text-align: center;
+}
+
+label {
+        display: inline-block;
+        width: 250px;
+      
+      }
+input {
+        padding: 13px 60px;
+        width:100%
+        margin:5px 0 22px 0;
+        display:inline- block;
+        border:none;
+        background: #f1f1f1;
+      }
+      
+input[type=button], input[type=submit] {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 5px 2px;
+  cursor: pointer;
+}
+
+
+input[type=button], input[type=reset]{
+  background-color:#DC7633;
+  border: none;
+  color: white;
+  padding: 10px 30px;
+  text-decoration: none;
+  margin: 5px 2px;
+  cursor: pointer;
 }
 
 .col-span-25{
@@ -180,11 +216,10 @@ h1{
   color: white;
   text-align: center;
 }
-
 </style>
-<head>
+
 <meta charset="UTF-8">
-<title>Create Admin</title>
+<title>Register Admin</title>
 </head>
 <body>
  <!-- Responsive navbar-->
@@ -192,7 +227,7 @@ h1{
               <input type="checkbox" id="nav-check">
               <div class="nav-header">
                 <div class="nav-title d-flex align-items-center">
-                  <p class="mb-brand">Create Admin</p>
+                  <p class="mb-brand">Register Admin</p>
                 </div>
               </div>
               <div class="nav-btn">
@@ -205,7 +240,6 @@ h1{
               
               <div class="nav-links">
                 <a href="ManageProfileSupervisorController">Manage Profile</a>  
-                <a href="createadmin.jsp">Register New Admin</a><br>
                 <a href= "ListAdminController">List Of Admin</a>
                 <a href="LogoutAdminController">Logout</a> 
                 <a href= "ViewSupervisorController">Back</a>
@@ -213,32 +247,31 @@ h1{
                 <a></a>
               </div>
         </div>
-	<h1>Create Admin</h1>
-	<form action="CreateAdminController" method="post">
+	<h1>Register Admin</h1>
+	<form  style= "padding:50px 50px 50px 50px;  text-align:left;" action="CreateAdminController" method="post">
 		<table>
 			<tbody>
                    <tr>
-                       <th><label for="fullname">Full Name</label></th>
-                       <th><input type="text"  name="add_name" placeholder="FULLNAME CAPITAL LETTER"></th>
+                       <th id="col-span-25"><label for="fullname">Full Name</label></th>
+                       <th id="col-span-75"><input type="text"  name="add_name" placeholder="FULLNAME CAPITAL LETTER"></th>
                    </tr>
                    <tr>
-                       <th><label for="addIC">IC Number</label></th>
-                       <th><input type="text"  name="admin_icnum" placeholder="000000000000-NO DASH"></th>
+                       <th id="col-span-25"><label for="addIC">IC Number</label></th>
+                       <th id="col-span-75"><input type="text"  name="admin_icnum" placeholder="000000000000-NO DASH"></th>
                    </tr>
                    <tr>
-                       <th><label for="age">Age</label></th>
-                       <th><input type="number"  name="add_age"></th>
+                       <th id="col-span-25"><label for="age">Age</label></th>
+                       <th id="col-span-75"><input type="number"  name="add_age"></th>
                    </tr>
                    <tr>
-                       <th><label for="phoneNumber">Phone Number</label></th>
-                       <th><input type="text"  name="add_phonenum" placeholder="000-00000000"></th>
+                       <th id="col-span-25"><label for="phoneNumber">Phone Number</label></th>
+                       <th id="col-span-75"><input type="text"  name="add_phonenum" placeholder="000-00000000"></th>
                    </tr>
                    <tr>
-                       <th><label for="addEmail">Email</label></th>
-                       <th><input type="text"  name="add_email" placeholder="abc@gmail.com "></th>
+                       <th id="col-span-25"><label for="addEmail">Email</label></th>
+                       <th id="col-span-75"><input type="text"  name="add_email" placeholder="abc@gmail.com "></th>
                    </tr>
-               
-                   
+                         
 			</tbody>
 		</table>
 		

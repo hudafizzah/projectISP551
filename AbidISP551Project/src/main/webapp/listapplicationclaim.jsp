@@ -12,6 +12,7 @@ if(session.getAttribute("currentSessionUser")==null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -87,21 +88,6 @@ body {
     top: 0px;
     transform: translate(-12px, 14px);
   }
-  .nav > .nav-btn > label {
-    display: inline-block;
-    width: 50px;
-    height: 50px;
-    padding: 13px;
-  }
-  .nav > .nav-btn > label:hover,.nav  #nav-check:checked ~ .nav-btn > label {
-    background-color: rgba(0, 0, 0, 0.3);
-  }
-  .nav > .nav-btn > label > span {
-    display: block;
-    width: 25px;
-    height: 10px;
-    border-top: 2px solid #eee;
-  }
   .nav > .nav-links {
     position: absolute;
     display: block;
@@ -156,13 +142,10 @@ button{
   cursor: pointer;
 }
 
-
 .footer {
-
   padding: 0.1px;
-
   text-align: center;
-    position: fixed;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -170,12 +153,8 @@ button{
   color: white;
   text-align: center;
 }
-
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800&display=swap');
-
-
 table {
-  border-collapse: collapse;
   background-color: white;
   overflow: hidden;
   width: %;
@@ -199,7 +178,7 @@ th {
   color: white;
 }
 
-.btn-view{
+.btn-deathcert{
   background-color: gray;
   color: white;
   cursor: pointer;
@@ -209,7 +188,7 @@ th {
   margin-right: 5px;
 }
 
-.btn-update{
+.btn-approve{
   background-color:#37cc53;
   cursor: pointer;
   color: white;
@@ -219,7 +198,7 @@ th {
     margin-right: 5px;
 }
 
-.btn-delete{
+.btn-decline{
   background-color: #d6524b;
   color: white;
   cursor: pointer;
@@ -229,7 +208,7 @@ th {
     margin-right: 5px;
 }
 
-  .hint{
+.hint{
 
             border-radius: 10px;
             background-color: black; 
@@ -244,7 +223,6 @@ th {
         }
 
 </style>
-<head>
 <meta charset="UTF-8">
 <title>View List of Application Claim</title>
 </head>
@@ -256,13 +234,6 @@ th {
                 <div class="nav-title d-flex align-items-center">
                   <p class="mb-brand">List Application Claim</p>
                 </div>
-              </div>
-              <div class="nav-btn">
-                <label for="nav-check">
-                  <span></span>
-                  <span></span>
-                  <span></span>
-                </label>
               </div>
               
               <div class="nav-links">
@@ -277,7 +248,7 @@ th {
               <a></a>
               </div>
               </div>
-    <form style="padding:50px 50px 50px 50px; text-align:center;">
+    <form style="padding:50px 50px 50px 450px; text-align:center;">
 	<table border="1">
 		<tr>
 			<th>Application id</th>
@@ -292,13 +263,26 @@ th {
 				<td><c:out value="${c.applicationid}"/></td>
 				<td><c:out value="${c.memberid}"/></td>
 				<td><c:out value="${c.appclaim_status}"/></td>
-				<td><a class="btn btn-view" href="ViewDeathCertController?applicationid=<c:out value="${c.applicationid}"/>">View Death Certificate</a></td>
-				<td><a class="btn btn-update" href="ApproveApplicationController?applicationid=<c:out value="${c.applicationid}"/>">APPROVE</a></td>
-				<td><a class="btn btn-delete" href="DeclineApplicationController?applicationid=<c:out value="${c.applicationid}"/>">DECLINE</a></td>
+				<td><a class="btn btn-deathcert" href="ViewDeathCertController?applicationid=<c:out value="${c.applicationid}"/>">View Death Certificate</a></td>
+				<td><a class="btn btn-approve" href="ApproveApplicationController?applicationid=<c:out value="${c.applicationid}"/>">APPROVE</a></td>
+				<td><a class="btn btn-decline" href="DeclineApplicationController?applicationid=<c:out value="${c.applicationid}"/>"onclick="confirmation(this.id)">DECLINE</a></td>
 				
 			</tr>
 		</c:forEach>
 	</table>
+	
+	<script>
+		function confirmation(id) {
+			console.log(id);
+			var r = confirm("Are you sure you want to decline?");
+			if (r == true) {
+				location.href = 'DeclineApplicationController?applicationid=' + id;
+				alert("Application successfully decline");
+			} else {
+				return false;
+			}
+		}
+		</script>
 	</form>
 	<footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
 </body>

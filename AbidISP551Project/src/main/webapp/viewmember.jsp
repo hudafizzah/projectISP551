@@ -146,7 +146,6 @@ button{
   cursor: pointer;
 }
 
-
 .footer {
 
   padding: 0.1px;

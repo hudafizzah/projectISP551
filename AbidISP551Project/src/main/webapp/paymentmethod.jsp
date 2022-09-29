@@ -207,6 +207,7 @@ h4{
                 <a href= " paymentmethod.jsp">Make Payment</a>  
                 <a href = "CreateClaimController">Claim Khairat</a>
                 <a href = "LogOutMemberController ">Log out</a>
+                <a href= "ViewMemberController2"    >Back</a>
                 
                 <a></a>  
                 <a></a>  

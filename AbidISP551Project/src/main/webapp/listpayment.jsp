@@ -12,6 +12,7 @@ if(session.getAttribute("currentSessionUser")==null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -175,7 +176,7 @@ button{
 
 
 table {
-  border-collapse: collapse;
+ 
   background-color: white;
   overflow: hidden;
   width: %;
@@ -243,7 +244,6 @@ th {
 
         }
 </style>
-<head>
 <meta charset="UTF-8">
 <title>View List Online Payment</title>
 </head>
@@ -298,10 +298,24 @@ th {
 				<td><c:out value="${p.memberid}"/></td>
 				<td><c:out value="${p.transactionid}"/></td>
 				<td><c:out value="${p.bank_name}"/></td>
-				<td><a class="btn-delete" href="DeletePaymentController?paymentid=<c:out value="${p.paymentid}"/>">Payment receive</a></td>
+				<td><a class="btn-delete" href="DeletePaymentController?paymentid=<c:out value="${p.paymentid}"/>"onclick= "confirmation(this.id)">Payment receive</a></td>
 			</tr>
 		</c:forEach>
 	</table>
+	
+			<script>
+		function confirmation(id) {
+			console.log(id);
+			var r = confirm("Are you sure you want to delete?");
+			if (r == true) {
+				location.href = 'DeletePaymentController?paymentid=' + id;
+				alert("Payment successfully deleted");
+			} else {
+				return false;
+			}
+		}
+		</script>
+	
 	</form>
 	
 	  <footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>

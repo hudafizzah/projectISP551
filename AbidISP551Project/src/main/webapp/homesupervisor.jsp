@@ -12,6 +12,7 @@ if(session.getAttribute("currentSessionUser")==null)
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
 <!DOCTYPE html>
 <html>
+<head>
 <style>
 /navbar/
 * {
@@ -86,6 +87,7 @@ body {
     top: 0px;
     transform: translate(-12px, 14px);
   }
+ 
   .nav > .nav-btn > label {
     display: inline-block;
     width: 50px;
@@ -128,12 +130,10 @@ body {
   }
 }
 .top-nav{
-
-                background-color: rgba(0,0,0, 0.9);
-                color: white;
-                flex-flow: row wrap;
-
-            }
+       background-color: rgba(0,0,0, 0.9);
+       color: white;
+       flex-flow: row wrap;
+ }
 
 button{
   background-color:#6b9bd1;
@@ -147,7 +147,7 @@ button{
 
 }
 
-/*form{
+form{
   position: absolute;
   top: 50%;
   left: 50%;
@@ -161,7 +161,7 @@ button{
   font-family: verdana;
    font-size: 20px;
 
-}*/
+}
 h1{
    text-align: center;
 }
@@ -192,7 +192,6 @@ h1{
 }
 
 </style>
-<head>
 <meta charset="UTF-8">
 <title>Supervisor home</title>
 </head>
@@ -202,17 +201,17 @@ h1{
               <input type="checkbox" id="nav-check">
               <div class="nav-header">
                 <div class="nav-title d-flex align-items-center">
-                  <p class="mb-brand">Home Admin</p>
+                  <p class="mb-brand">Supervisor Home</p>
                 </div>
               </div>
-              <div class="nav-btn">
+                <div class="nav-btn">
                 <label for="nav-check">
                   <span></span>
                   <span></span>
                   <span></span>
                 </label>
               </div>
-              
+  
               <div class="nav-links">
                 <a href="ManageProfileSupervisorController">Manage Profile</a>  
                 <a href="createadmin.jsp">Register New Admin</a><br>
@@ -222,17 +221,48 @@ h1{
                 <a></a>
               </div>
         </div>
-	<h1>Supervisor Home</h1>
-
+<form style = "padding:50px 50px 50px 50px; text-align:auto;">
     <h1>Supervisor Profile</h1>
-    Admin ID: <c:out value="${a.adminid}"/> <br>
-	Admin Name: <c:out value="${a.add_name}"/> <br>
-	Admin IC Number: <c:out value="${a.admin_icnum}"/> <br>
-	Admin Age: <c:out value="${a.add_age}"/> <br>
-	Admin Email: <c:out value="${a.add_email}"/> <br>
-	Phone Number: <c:out value="${a.add_phonenum}"/> <br>
-	Admin password: <c:out value="${a.add_password}"/> <br>
+    <table>
+		<tr>
+			<td id="col-span-25">Admin ID</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.adminid}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Admin Name</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_name}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Admin IC Number</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.admin_icnum}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Admin Age</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_age}"/>&nbsp;years old</td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Admin Email</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_email}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Phone Number</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_phonenum}"/></td>
+		</tr>
+		
+		<tr>
+			<td id="col-span-25">Admin password</td>
+			<td id="col-span-75">:&nbsp;<c:out value="${a.add_password}"/></td>
+		</tr>
+	
+	</table>
+	<br><br>
 	<button onclick="document.location='LogoutAdminController'">Logout</button>
+ </form>
 </body>
 <footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
 </html>

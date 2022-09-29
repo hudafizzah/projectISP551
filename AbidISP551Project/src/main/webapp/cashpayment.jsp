@@ -235,7 +235,7 @@ form{
                 </div>
                 </div>
               
-	<form action="CashPaymentController" method="post" style= "padding:50px 50px 50px 50px; text-align:auto;">
+	<form action="CashPaymentController" method="post" style= "padding:40px 80px 40px 80px; text-align:auto;">
 	<p>Please make cash payment into our admin</p>
 	<p>List of admin and contact number</p>
 	<table border="1">
