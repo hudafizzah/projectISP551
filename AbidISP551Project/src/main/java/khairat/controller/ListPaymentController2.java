@@ -22,13 +22,13 @@ public class ListPaymentController2 extends HttpServlet {
 
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("payment", DaoKhairat.getAllPayment());
+		request.setAttribute("payment", DaoKhairat.getAllCashPayment());
 		RequestDispatcher view = request.getRequestDispatcher("listcashpayment.jsp");
 		view.forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.setAttribute("payment", DaoKhairat.getAllPayment());
+		request.setAttribute("payment", DaoKhairat.getAllCashPayment());
 		RequestDispatcher view = request.getRequestDispatcher("listcashpayment.jsp");
 		view.forward(request, response);
 	}

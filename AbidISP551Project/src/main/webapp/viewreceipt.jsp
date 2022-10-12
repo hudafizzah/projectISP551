@@ -129,7 +129,7 @@ flex-flow: row wrap;}
               <input type="checkbox" id="nav-check">
               <div class="nav-header">
                 <div class="nav-title d-flex align-items-center">
-                  <p class="mb-brand">View Death Certification</p>
+                  <p class="mb-brand">Online Payment Receipt</p>
                 </div>
               </div>
               
@@ -145,8 +145,8 @@ flex-flow: row wrap;}
                 <a></a>
               </div>
         </div>
-	<h2>Online Payment Receipt</h2>
-	Payment ID: <c:out value="${p.paymentid}"/> <br>
+
+	<h3 style="text-align:center; ">Payment ID: <c:out value="${p.paymentid}"/></h3> <br>
 	<iframe src="receiptimg/<c:out value="${p.payment_receipt}"/>" width="100%" height="500px"></iframe>
 	
 	 <footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>	

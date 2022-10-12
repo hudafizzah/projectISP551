@@ -25,8 +25,8 @@ public class DeleteCashPaymentController extends HttpServlet {
     }
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("paymentid"));
-		dao.deletePayment(id);
-		request.setAttribute("payment", DaoKhairat.getAllPayment());
+		dao.deleteCashPayment(id);
+		request.setAttribute("payment", DaoKhairat.getAllCashPayment());
 		RequestDispatcher view = request.getRequestDispatcher("listcashpayment.jsp");
 		view.forward(request, response);
 	}

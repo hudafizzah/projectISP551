@@ -49,7 +49,7 @@ public class CashPaymentController extends HttpServlet {
 		
 		p.setPayment_amount(Double.parseDouble(request.getParameter("payment_amount")));
 		p.setMemberid((int)session.getAttribute("currentSessionUser"));
-		
+		p.setAdminname(request.getParameter("adminname"));
 		dao.cashPayment(p);
 		JOptionPane.showMessageDialog(null,"Please make a payment to our admin");
 		request.setAttribute("m", DaoMember.getMemberById((int)session.getAttribute("currentSessionUser")));

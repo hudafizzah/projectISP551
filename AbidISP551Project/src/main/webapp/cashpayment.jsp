@@ -146,6 +146,7 @@ input[type=button], input[type=submit] {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius:20px;
 }
 
 
@@ -157,6 +158,7 @@ input[type=button], input[type=reset]{
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius:20px;
 }
 
 
@@ -235,7 +237,7 @@ form{
                 </div>
                 </div>
               
-	<form action="CashPaymentController" method="post" style= "padding:40px 80px 40px 80px; text-align:auto;">
+	<form action="CashPaymentController" method="post" style= "padding:3px 90px 20px 90px; text-align:auto;">
 	<p>Please make cash payment into our admin</p>
 	<p>List of admin and contact number</p>
 	<table border="1">
@@ -253,6 +255,7 @@ form{
 	
 	   		<table>
 			<tr>
+			
 			<td id="col-span-25">Member ID:</td>
 			<td id="col-span-75">:&nbsp;<c:out value="${m.memberid}"/></td>
 		</tr>
@@ -269,16 +272,27 @@ form{
 		
 		<tr>
 			<td id="col-span-25">Payment Date</td>
-			<td id="col-span-75">:&nbsp;<input id = "currentDate" type="date" name="payment_date"></td>
+			<td id="col-span-75">:&nbsp;<input id = "currentDate" type="date" name="payment_date" required></td>
 		</tr>
 		
 		<tr>
 			<td id="col-span-25">Payment Amount</td>
 			<td>
-			            <select name="payment_amount">
+			            <select name="payment_amount" required>
 							<option value="5">Monthly Payment (RM5)</option>
 							<option value="60">Yearly Payment (RM60)</option>
 						</select>
+			</td>
+		</tr>
+		<tr>
+			<td id="col-span-25">Payment made to</td>
+			<td>
+			           
+						<select name="adminname" required>
+                            <c:forEach items ="${admin}" var="a" varStatus="admin">
+                                <option value="${a.add_name}">${a.add_name}</option>
+                            </c:forEach>
+                        </select>
 			</td>
 		</tr>
     	</table>

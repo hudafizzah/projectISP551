@@ -157,6 +157,35 @@ input[type=button], input[type=reset]{
   cursor: pointer;
 }
 
+#container{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:105px 25px;
+min-height:100hv;
+padding-bottom:70px;
+}
+#manage{
+padding:20px;
+width:500px;
+background:#f0f8ff	;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+gap:15px;
+}
+
+#change{
+padding:53px 20px 53px 20px;
+width:500px;
+background:#f0f8ff	;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+gap:15px;
+}
+h3{
+font-size:20px;
+color:#333;
+padding:20px 20px 20px 20px;
+}
+
 button{
   background-color:#DC7633;
   border: none;
@@ -204,8 +233,9 @@ button{
 
               </div>
         </div>
-	<h1>MANAGE PROFILE</h1>
-	<form action="ManageProfileMemberController?action=update_profile" method="post">
+	<div id="container">
+	<form id="manage" action="ManageProfileMemberController?action=update_profile" method="post">
+	<h3>MANAGE PROFILE</h3>
 		<table>
 			<tbody>
 				<tr>
@@ -253,8 +283,8 @@ button{
 		<input type="reset" value="Reset"/>
 	</form>
 	
-	<h1>CHANGE PASSWORD</h1>
-	<form action="ManageProfileMemberController?action=change_pass" method="post">
+	<form id="change" action="ManageProfileMemberController?action=change_pass" method="post">
+	<h3 >CHANGE PASSWORD</h3>
 		<table>
 			<tbody>
 				<tr>
@@ -290,6 +320,7 @@ button{
 		</table>
 		<input type="submit" value="Submit"/>
 	</form>
+	</div>
 	
 	<script>
       function showPass() {
@@ -329,6 +360,6 @@ button{
       
       </script>
       
-     
 </body>
+<footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
 </html>

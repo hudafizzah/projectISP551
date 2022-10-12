@@ -21,18 +21,18 @@ public class ApproveApplicationController extends HttpServlet {
         dao = new DaoKhairat();
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-	}
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("In doPost method Approve Application Controller");
+    	System.out.println("In doPost method Approve Application Controller");
 		Claimkhairat c = new Claimkhairat();
 		HttpSession session = request.getSession(true);
 		c.setAdminid((int)session.getAttribute("currentSessionUser"));
 		c.setApplicationid(Integer.parseInt(request.getParameter("applicationid")));
 		dao.approveApplication(c);
 		
-		RequestDispatcher view = request.getRequestDispatcher("listapplicationclaim.jsp");
-		view.forward(request, response);
+		request.setAttribute("claimkhairat", DaoKhairat.getAllAppClaim());
+        RequestDispatcher view = request.getRequestDispatcher("listapplicationclaim.jsp");
+        view.forward(request, response);
+	
 	}
+	
 
 }

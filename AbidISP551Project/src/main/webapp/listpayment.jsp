@@ -200,8 +200,8 @@ th {
   color: white;
 }
 
-.btn-view{
-  background-color: gray;
+.btn-receipt{
+  background-color:	#707070;
   color: white;
   cursor: pointer;
   padding: 10px 20px;
@@ -210,23 +210,15 @@ th {
   margin-right: 5px;
 }
 
-.btn-update{
-  background-color:#37cc53;
-  cursor: pointer;
-  color: white;
-  padding: 10px 20px;
-  border-radius: 8px;
-   font-size: 14px;
-    margin-right: 5px;
-}
 
-.btn-delete{
-  background-color: #d6524b;
+
+.btn-payreceive{
+  background-color:#228b22;
   color: white;
   cursor: pointer;
   padding: 10px 20px;
   border-radius: 8px;
-   font-size: 14px;
+  font-size: 14px;
     margin-right: 5px;
 }
 
@@ -269,14 +261,14 @@ th {
                 <a href= "createmember.jsp">Register New Member</a>  
                 <a href= "ListMemberController">List Member</a>  
                 <a href= "ListPaymentController2">List Cash Payment</a>  
-                <a href= "ListClaimController">List of Application</a>  
+                <a href= "ListClaimController">List Application Claim</a>  
                 <a href= "LogoutAdminController">Log out</a>  
                 <a href= "ViewAdminController2">Back</a>
                 <a></a>
      
               </div>
         </div>
-     <form style="padding:50px 50px 50px 50px; text-align:center;">
+     <form style="padding:50px 50px 50px 350px; text-align:center;">
 	<table border="1">
 		<tr>
 			<th>Payment id</th>
@@ -287,18 +279,18 @@ th {
 			<th>Transaction ID</th>
 			<th>Bank Name</th>
 			<th>Action</th>
-			<th colspan="10">Action</th>
+			
 		</tr>
 		<c:forEach items ="${payment}" var="p">
 			<tr>
 				<td><c:out value="${p.paymentid}"/></td>
 				<td><c:out value="${p.payment_date}"/></td>
 				<td><c:out value="RM${p.payment_amount}"/></td>
-				<td><a class="btn btn-primary" href="ViewReceiptController?paymentid=<c:out value="${p.paymentid}"/>">View Receipt</a></td>
+				<td><a class="btn-receipt" href="ViewReceiptController?paymentid=<c:out value="${p.paymentid}"/>">View Receipt</a></td>
 				<td><c:out value="${p.memberid}"/></td>
 				<td><c:out value="${p.transactionid}"/></td>
 				<td><c:out value="${p.bank_name}"/></td>
-				<td><a class="btn-delete" href="DeletePaymentController?paymentid=<c:out value="${p.paymentid}"/>"onclick= "confirmation(this.id)">Payment receive</a></td>
+				<td><a class="btn-payreceive" href="DeletePaymentController?paymentid=<c:out value="${p.paymentid}"/>"onclick= "confirmation(this.id)">Payment receive</a></td>
 			</tr>
 		</c:forEach>
 	</table>
@@ -306,10 +298,10 @@ th {
 			<script>
 		function confirmation(id) {
 			console.log(id);
-			var r = confirm("Are you sure you want to delete?");
+			var r = confirm("Payment has been received?");
 			if (r == true) {
 				location.href = 'DeletePaymentController?paymentid=' + id;
-				alert("Payment successfully deleted");
+				alert("Payment successfully received");
 			} else {
 				return false;
 			}

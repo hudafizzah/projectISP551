@@ -131,12 +131,11 @@ body {
   }
 }
 .top-nav{
-
-                background-color: rgba(0,0,0, 0.9);
-                color: white;
-                flex-flow: row wrap;
-
-            }
+ background-color: rgba(0,0,0, 0.9);
+color: white;
+ flex-flow: row wrap;
+}
+            
 input[type=button], input[type=submit] {
   background-color: #04AA6D;
   border: none;
@@ -157,18 +156,34 @@ input[type=button], input[type=reset]{
   cursor: pointer;
 }
 
-.footer {
-
-  padding: 0.1px;
-  text-align: center;
-    position: fixed;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  background-color: #143d59	;
-  color: white;
-  text-align: center;
+#container{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:125px 25px;
+min-height:100hv;
+padding-bottom:70px;
 }
+form{
+padding:20px;
+width:500px;
+background:#f0f8ff	;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+gap:15px;
+}
+h3.title1{
+font-size:20px;
+color:#333;
+padding:20px 20px 20px 20px;
+
+}
+h3.title{
+font-size:20px;
+color:#333;
+padding:20px 20px 20px 20px;
+
+}
+
 button{
   background-color:#DC7633;
   border: none;
@@ -180,10 +195,9 @@ button{
 }
 
 .footer {
-
   padding: 0.1px;
   text-align: center;
-    position: fixed;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
@@ -217,15 +231,17 @@ button{
                 <a href= "ListMemberController">List Member</a>  
                 <a href= "ListPaymentController">List Online Payment</a> 
                 <a href= "ListPaymentController2">List Cash Payment</a>  
-                <a href= "ListClaimController">List of Application</a>  
+                <a href= "ListClaimController">List Application Claim</a>  
                 <a href= "LogoutAdminController">Log out</a>  
                 <a href = "ViewAdminController2">BACK</a>
                 <a></a>
      
               </div>
         </div>
-	<h1>MANAGE PROFILE</h1>
-	<form action="ManageProfileAdminController?action=update_profile" method="post">
+    <div id="container">
+
+	<form id="manage" action="ManageProfileAdminController?action=update_profile" method="post">
+	<h3 class="title1">MANAGE PROFILE</h3>
 		<table>
 			<tbody>
 				<tr>
@@ -261,8 +277,9 @@ button{
 		<input type="reset" value="Reset"/>
 	</form>
 	
-	<h1>CHANGE PASSWORD</h1>
+
 	<form action="ManageProfileAdminController?action=change_pass" method="post">
+		<h3 class="title">CHANGE PASSWORD</h3>
 		<table>
 			<tbody>
 				<tr>
@@ -298,6 +315,7 @@ button{
 		</table>
 		<input type="submit" value="Submit"/>
 	</form>
+	</div>
 	
 	<script>
       function showPass() {

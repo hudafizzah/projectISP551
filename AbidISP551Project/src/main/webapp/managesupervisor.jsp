@@ -127,6 +127,7 @@ body {
     height: calc(100vh - 80px);
     overflow-y: auto;
     z-index: 2;}
+    
 }
 .top-nav{
 background-color: rgba(0,0,0, 0.9);
@@ -153,6 +154,27 @@ input[type=button], input[type=reset]{
   margin: 4px 2px;
   cursor: pointer;
 }
+#container{
+display:flex;
+justify-content:center;
+align-items:center;
+padding:125px 25px;
+min-height:100hv;
+padding-bottom:70px;
+}
+form{
+padding:20px;
+width:500px;
+background:#f0f8ff	;
+box-shadow:0 5px 10px rgba(0,0,0,.1);
+gap:15px;
+}
+h3{
+font-size:20px;
+color:#333;
+padding:20px 20px 20px 20px;
+}
+
 button{
   background-color:#6b9bd1;
   border: none;
@@ -198,7 +220,7 @@ button{
               </div>
               
               <div class="nav-links">
-              <a href="createadmin.jsp">Register New Admin</a><br>
+              <a href="createadmin.jsp">Register New Admin</a>
               <a href= "ListAdminController">List Of Admin</a>
               <a href="LogoutAdminController">Logout</a> 
               <a href= "ViewSupervisorController">Back</a>
@@ -206,9 +228,9 @@ button{
               <a></a>
               </div>
         </div>
-	
-	<h1>MANAGE PROFILE</h1>
+	<div id="container">
 	<form action="ManageProfileSupervisorController?action=update_profile" method="post">
+	<h3>MANAGE PROFILE</h3>
 		<table>
 			<tbody>
 				<tr>
@@ -244,8 +266,9 @@ button{
 		<input type="reset" value="Reset"/>
 	</form>
 	
-	<h1>CHANGE PASSWORD</h1>
+	
 	<form action="ManageProfileAdminController?action=change_pass" method="post">
+	<h3 >CHANGE PASSWORD</h3>
 		<table>
 			<tbody>
 				<tr>
@@ -281,6 +304,7 @@ button{
 		</table>
 		<input type="submit" value="Submit"/>
 	</form>
+	</div>
 	
 	<script>
       function showPass() {
@@ -319,6 +343,6 @@ button{
     	}
       
       </script>
-<footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
 </body>
+<footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
 </html>

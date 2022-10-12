@@ -249,7 +249,7 @@ public class DaoMember {
   	}
   	
   	//get all member by search
-  	public static List<Member> getAllMemberBySearch(String search) 
+  	/*public static List<Member> getAllMemberBySearch(String search) 
   	{
   		List<Member> member= new ArrayList<Member>();
   		System.out.println("inside method getAllMemberbySearch");
@@ -288,5 +288,5 @@ public class DaoMember {
 			e.printStackTrace();
 		}
   	    return member;
-  	}
+  	}*/
 }

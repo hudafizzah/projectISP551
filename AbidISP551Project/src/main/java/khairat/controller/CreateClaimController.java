@@ -1,5 +1,6 @@
 package khairat.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 
 import java.io.IOException;
@@ -51,7 +52,7 @@ public class CreateClaimController extends HttpServlet {
 		dao.applicationClaim(c);
 		
 		//set an upload path of file
-		String uploadPath = "C:/Users/user/git/projectISP551/AbidISP551Project/src/main/webapp/deathcertificateimg" + file.getSubmittedFileName();
+		String uploadPath = "C:/Users/user/git/projectISP551/AbidISP551Project/src/main/webapp/deathcertificateimg" +File.separator + file.getSubmittedFileName();
 		System.out.println("Upload Path : "+uploadPath);
 		
 		//uploading selected file into folder

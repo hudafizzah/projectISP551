@@ -10,6 +10,10 @@ response.setDateHeader("Expires",0);
 if(session.getAttribute("currentSessionUser")==null)
 	response.sendRedirect("index.html");%>
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
+<%@page import="connectionDB.ConnectionManager" %>
+<%@page import="java.sql.*" %>
+<%@page import="java.sql.ResultSet" %>
+<%@page import="java.sql.Statement" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -179,7 +183,7 @@ th {
 }
 
 .btn-deathcert{
-  background-color: gray;
+  background-color:gray;
   color: white;
   cursor: pointer;
   padding: 10px 20px;
@@ -209,19 +213,20 @@ th {
 }
 
 .hint{
+ border-radius: 10px;
+ background-color: black; 
+ padding: 15px 15px;
+}
 
-            border-radius: 10px;
-            background-color: black; 
-            padding: 15px 15px;
+.hint p{
 
-        }
-
-        .hint p{
-
-            margin-bottom: 10px;
-
-        }
-
+ margin-bottom: 10px;
+}
+#search-btn{
+color:#f55742;
+padding: 10px 30px 10px 10px;
+border-radius:10px;
+}
 </style>
 <meta charset="UTF-8">
 <title>View List of Application Claim</title>
@@ -242,12 +247,21 @@ th {
               <a href= "ListMemberController">List Member</a>  
               <a href= "ListPaymentController">List Online Payment</a> 
               <a href="ListPaymentController2">List Cash Payment</a>
+              <a href="listapplicationclaim.jsp">List Application Claim</a>
               <a href="LogoutAdminController">Logout </a>  
               <a href= "ViewAdminController2">Back</a>   
               <a></a>
               <a></a>
               </div>
               </div>
+              
+         <div class="search-box">
+            <form  action="" method="get" style="margin:25px 50px 1px 50px; position:center; " >
+            <input id=search-btn type="text" class="form-control" name="applicationclaimsearch" placeholder="  STATUS"/>
+            <input style="border-radius:25px;" type=submit value=search >
+            </form>
+        </div>
+         
     <form style="padding:50px 50px 50px 450px; text-align:center;">
 	<table border="1">
 		<tr>
@@ -258,7 +272,7 @@ th {
 			 <th colspan="10">Action</th>
 			
 		</tr>
-		<c:forEach items ="${claimkhairat}" var="c">
+	<!--  --	<c:forEach items ="${claimkhairat}" var="c">
 			<tr>
 				<td><c:out value="${c.applicationid}"/></td>
 				<td><c:out value="${c.memberid}"/></td>
@@ -268,9 +282,44 @@ th {
 				<td><a class="btn btn-decline" href="DeclineApplicationController?applicationid=<c:out value="${c.applicationid}"/>"onclick="confirmation(this.id)">DECLINE</a></td>
 				
 			</tr>
-		</c:forEach>
+		</c:forEach>--->
+			      <%
+            try {
+                Statement stat=null;
+                ResultSet res=null;
+                Connection con = ConnectionManager.getConnection();  
+                stat = con.createStatement();
+                String query = request.getParameter("applicationclaimsearch");
+                String data;
+                if(query!=null){
+                	data="select * from applicationclaim where appclaim_status like '%" + query + "%' or LOWER (appclaim_status) LIKE '%"+ query + "%'or Upper(appclaim_status) LIKE '%" + query + "%'" ;
+                }else{
+                	data="select * from applicationclaim order by applicationid desc";
+                }
+
+                 res = stat.executeQuery(data);
+                while(res.next()) {
+                	
+                %>
+
+                    <tr>
+                        <td><%=res.getInt("applicationid")%></td>
+                        <td><%=res.getInt("memberid")%></td>
+                        <td><%=res.getString("appclaim_status")%></td>
+                   
+                <td><a class="btn btn-deathcert" href="ViewDeathCertController?applicationid=<%=res.getInt("applicationid")%>">View Death Certificate</a></td>
+				<td><a class="btn btn-approve" href="ApproveApplicationController?applicationid=<%=res.getInt("applicationid")%>">APPROVE</a></td>
+				<td><a class="btn btn-decline" href="DeclineApplicationController?applicationid=<%=res.getInt("applicationid")%>"onclick= "confirmation(this.id)">Decline</a></td>
+				 </tr>
+                    <%
+                    
+                }
+
+            }
+            catch (Exception e) {}
+            %>
 	</table>
-	
+	</form>
 	<script>
 		function confirmation(id) {
 			console.log(id);
@@ -283,7 +332,7 @@ th {
 			}
 		}
 		</script>
-	</form>
+	
 	<footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
 </body>
 </html>

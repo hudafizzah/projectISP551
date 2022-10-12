@@ -1,5 +1,6 @@
 package khairat.controller;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -61,7 +62,7 @@ public class OnlinePaymentController extends HttpServlet {
 		dao.onlinePayment(p);
 		
 		//set an upload path of file
-		String uploadPath = "C:/Users/user/git/projectISP551/AbidISP551Project/src/main/webapp/receiptimg" + file.getSubmittedFileName();
+		String uploadPath = "C:/Users/user/git/projectISP551/AbidISP551Project/src/main/webapp/receiptimg" +File.separator +file.getSubmittedFileName();
 		System.out.println("Upload Path : "+uploadPath);
 		
 		//uploading selected file into folder

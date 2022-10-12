@@ -17,7 +17,7 @@ public class DaoKhairat {
 	
 	private int paymentid,memberid,applicationid,adminid;
 	private double payment_amount;
-	private String bankname,transactionid,payment_receipt,appclaim_status,deathcertificate;
+	private String bankname,transactionid,payment_receipt,appclaim_status,deathcertificate, adminname;
 	private Date payment_date;
 	private Part inputFile ;
 	//CREATE CASH PAYMENT
@@ -27,16 +27,17 @@ public class DaoKhairat {
 		paymentid = p.getPaymentid();
 		payment_amount = p.getPayment_amount();
 		memberid = p.getMemberid();
-		
+		adminname = p.getAdminname();
 		try {
 			//call getConnection() method
 			con = ConnectionManager.getConnection();
 			
 			//create statement
-			ps = con.prepareStatement("INSERT INTO payment(payment_date,payment_amount,memberid) values(?,?,?)");
+			ps = con.prepareStatement("INSERT INTO cash (payment_date,payment_amount,memberid, adminname) values(?,?,?,?)");
 			ps.setDate(1, sqlDate);
 			ps.setDouble(2, payment_amount);
 			ps.setInt(3, memberid);
+			ps.setString(4, adminname);
 			//execute query
 			ps.executeUpdate();
 			System.out.println("Successfully inserted");
@@ -63,7 +64,7 @@ public class DaoKhairat {
 			con = ConnectionManager.getConnection();
 			
 			//create statement
-			ps = con.prepareStatement("INSERT INTO payment (payment_date,payment_amount,payment_receipt,memberid,transactionid,bank_name) values(?,?,?,?,?,?)");
+			ps = con.prepareStatement("INSERT INTO online (payment_date,payment_amount,payment_receipt,memberid,transactionid,bank_name) values(?,?,?,?,?,?)");
 			ps.setDate(1, sqlDate);
 			ps.setDouble(2, payment_amount);
 			ps.setString(3, payment_receipt);
@@ -191,7 +192,7 @@ public class DaoKhairat {
 			
 			//create statement
 			st = con.createStatement();
-			String sql = "SELECT * FROM payment";
+			String sql = "SELECT * FROM cash";
 			
 			//execute query
 			rs = st.executeQuery(sql);
@@ -202,6 +203,7 @@ public class DaoKhairat {
 				p.setPayment_date(rs.getDate("payment_date"));
 				p.setPayment_amount(rs.getDouble("payment_amount"));
 				p.setMemberid(rs.getInt("memberid"));
+				p.setAdminname(rs.getString("adminname"));
 				System.out.println("data mana woi??");
 				payment.add(p);
 			}
@@ -243,7 +245,7 @@ public class DaoKhairat {
   			con = ConnectionManager.getConnection();
   			
   			//create statement
-  			ps = con.prepareStatement("DELETE FROM payment WHERE paymentid=?");
+  			ps = con.prepareStatement("DELETE FROM cash WHERE paymentid=?");
   			ps.setInt(1, id);
   			
   			//execute query
@@ -321,7 +323,7 @@ public class DaoKhairat {
    		 	con = ConnectionManager.getConnection ();
    		 	
 	   		//create statement
-	   		ps = con.prepareStatement("UPDATE applicationclaim SET adminid=?,appclaim_status=?, WHERE applicationid=?");
+	   		ps = con.prepareStatement("UPDATE applicationclaim SET adminid=?,appclaim_status=? WHERE applicationid=?");
 	   		ps.setInt(1, adminid);
 	   		ps.setString(2, "APPROVE");
 	   		ps.setInt(3, applicationid);
@@ -347,9 +349,7 @@ public class DaoKhairat {
 	   		 	con = ConnectionManager.getConnection ();
 	   		 	
 		   		//create statement
-		   		ps = con.prepareStatement("ALTER TABLE applicationclaim DROP CONSTRAINT applicationclaim_adminid_fkey"
-		   				+ "UPDATE applicationclaim SET adminid=?,appclaim_status=?, WHERE applicationid=?"
-		   				+ "ALTER TABLE applicationclaim ADD CONSTRAINT applicationclaim_adminid_fkey FOREIGN KEY (adminid) REFERENCES admin (adminid)");
+	   		    ps = con.prepareStatement("UPDATE applicationclaim SET adminid=?,appclaim_status=? WHERE applicationid=?");
 		   		ps.setInt(1, adminid);
 		   		ps.setString(2, "DECLINE");
 		   		ps.setInt(3, applicationid);

@@ -12,6 +12,7 @@ public class Payment {
 	private int memberid;
 	private String transactionid;
 	private String bank_name;
+	private String adminname;
 
 	
 	public Payment() {
@@ -72,6 +73,14 @@ public class Payment {
 
 	public void setBank_name(String bank_name) {
 		this.bank_name = bank_name;
+	}
+
+	public String getAdminname() {
+		return adminname;
+	}
+
+	public void setAdminname(String adminname) {
+		this.adminname = adminname;
 	}
 
 

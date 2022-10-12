@@ -10,6 +10,10 @@ response.setDateHeader("Expires",0);
 if(session.getAttribute("currentSessionUser")==null)
 	response.sendRedirect("index.html");%>
 <%int id = (Integer) session.getAttribute("currentSessionUser");%>
+<%@page import="connectionDB.ConnectionManager" %>
+<%@page import="java.sql.*" %>
+<%@page import="java.sql.ResultSet" %>
+<%@page import="java.sql.Statement" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -174,7 +178,7 @@ th {
 }
 
 .btn-view{
-  background-color: gray;
+  background-color:#707070;
   color: white;
   cursor: pointer;
   padding: 10px 20px;
@@ -217,9 +221,13 @@ th {
             margin-bottom: 10px;
 
         }
+#search-btn{
+color:#f55742;
+padding: 10px 30px 10px 10px;
+border-radius:10px;
+}
+
 </style>
-
-
 <meta charset="UTF-8">
 <title> List Member</title>
 </head>
@@ -238,17 +246,24 @@ th {
                 <a href="createmember.jsp">Register New Member</a>   
                 <a href= "ListPaymentController">List Online Payment</a> 
                 <a href="ListPaymentController2">List Cash Payment</a>
-                <a href="ListClaimController">List of Application Claim</a>
+                <a href="ListClaimController">List Application Claim</a>
                 <a href="LogoutAdminController">Logout</a> 
                 <a href ="ViewAdminController2">BACK</a>
                 <a></a>
                 <a></a>
               </div>
         </div>
-        <form action="SearchMemberController" method=get>
+        <!-- <form action="SearchMemberController" method=get>
         <input type=text name="search" placeholder="search member by name and memberid">
         <input type=submit value=search >
-        </form>
+        </form>-->
+        
+        <div class="search-box">
+            <form  action="" method="get" style="margin:25px 50px 10px 50px; position:center; " >
+            <input id=search-btn type="text" class="form-control" name="q" placeholder=" name or ICnumber"/>
+            <input style="border-radius:25px;" type=submit value=search >
+            </form>
+        </div>
        
          <form style="padding:50px 50px 50px 50px; text-align:center;">
 		<table border="1">
@@ -265,7 +280,7 @@ th {
 				<th>Password</th>
 				<th colspan="10">Action</th>
 			</tr>
-			<c:forEach items ="${member}" var="m">
+		<!-- - --<c:forEach items ="${member}" var="m">
 			<tr>
 				<td><c:out value="${m.memberid}" /></td>
 				<td><c:out value="${m.mem_name}" /></td>
@@ -278,15 +293,57 @@ th {
 				<td><c:out value="${m.repname}" /></td>
 			    <td><c:out value="${m.repnum}" /></td>
 			    <td><c:out value="${m.mem_password}" /></td>
+			    </c:forEach>-->
+			      <%
+            try {
+                Statement stat=null;
+                ResultSet res=null;
+                Connection con = ConnectionManager.getConnection();  
+                stat = con.createStatement();
+                String query = request.getParameter("q");
+                String data;
+                if(query!=null){
+                	data="select * from member where mem_name like '%" + query + "%' or LOWER (mem_name) LIKE '%"+ query + "%'or Upper(mem_name) LIKE '%" + query + "%' or  mem_icnum like '%"+ query + "%'" ;
+                }else{
+                	data="select * from member order by memberid desc";
+                }
+
+                 res = stat.executeQuery(data);
+                while(res.next()) {
+                	
+                %>
+
+                    <tr>
+                        <td><%=res.getInt("memberid")%></td>
+                        <td><%=res.getString("mem_name")%></td>
+                        <td><%=res.getString("mem_icnum")%></td>
+                        <td><%=res.getString("mem_email")%></td>
+                        <td><%=res.getInt("mem_age")%></td>
+                        <td><%=res.getString("mem_address")%></td>
+                         <td><%=res.getString("mem_phonenum")%></td>
+                        <td><%=res.getString("repname")%></td>
+                        <td><%=res.getString("repnum")%></td>
+                        <td><%=res.getString("mem_password")%></td>
+                          
+                   
+                <td><a class="btn-view" href="ViewMemberController?memberid=<%=res.getInt("memberid")%>">View</a></td>
+				<td><a class="btn-update" href="UpdateMemberController?memberid=<%=res.getInt("memberid")%>">Updates</a></td>
+				<td><a class="btn-delete" href="DeleteMemberController?memberid=<%=res.getInt("memberid")%>"onclick= "confirmation(this.id)">Delete</a></td>
+				 </tr>
+                    <%
+                    
+                }
+
+            }
+            catch (Exception e) {}
+            %>
 							
-				<td><a class="btn-view" href="ViewMemberController?memberid=<c:out value="${m.memberid}"/>">View</a></td>
-				<td><a class="btn-update" href="UpdateMemberController?memberid=<c:out value="${m.memberid}"/>">Update</a></td>
-				<td><a class="btn-delete" href="DeleteMemberController?memberid=<c:out value="${m.memberid}"/>"onclick= "confirmation(this.id)">Delete</a></td>
-				
-			</tr>
-			</c:forEach>
-	    
+		  
 		</table>
+		
+		  
+           </form><br>
+		
 		
 		<script>
 		function confirmation(id) {
@@ -300,7 +357,7 @@ th {
 			}
 		}
 		</script>
-	    </form>
+	    
 		
 		  <footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>
 </body>

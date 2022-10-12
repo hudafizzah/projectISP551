@@ -165,9 +165,8 @@ form{
   label {
         display: inline-block;
         width: 250px;
-      
       }
-      input {
+ input {
         padding: 5px 10px;
       }
 
@@ -184,6 +183,10 @@ form{
   color: white;
   text-align: center;
 }
+.form {
+        margin-bottom: 20px;
+          border-bottom: double;
+      }
 
 </style>
 
@@ -209,7 +212,7 @@ form{
               
          <div class="nav-links">
                 <a href="ManageProfileSupervisorController">Manage Profile</a>  
-                <a href="createadmin.jsp">Register New Admin</a><br>
+                <a href="createadmin.jsp">Register New Admin</a>
                 <a href= "ListAdminController">List Of Admin</a>
                 <a href="LogoutAdminController">Logout</a> 
                 <a href= "ListAdminController">Back</a>
@@ -219,6 +222,10 @@ form{
         </div>
      <h1 style="text-align:center;">Update Info</h1>
 	<form action="UpdateMemberController" method="post" style= "padding:50px 50px 50px 50px; text-align:auto;">
+		<div class= "form">
+		<label>Supervisor ID</label>:&nbsp; ${a.supervisorid} <br>
+		
+		</div>
 		
 		<label >Admin IC Number</label>:&nbsp;
 		<input type="text" name="admin_icnum" value="<c:out value="${a.admin_icnum}"/>"/><br>
@@ -230,9 +237,9 @@ form{
 		<input type="text" name="add_phonenum" value="<c:out value="${a.add_phonenum}"/>"/><br>
 		<label>Password</label>:&nbsp;
 		<input type="password" name="add_password" value="<c:out value="${a.add_password}"/>"/><br>
-		<label>SupervisorID</label>:&nbsp;
+		<!-- - --<label>SupervisorID</label>:&nbsp;
 		<input type="number" name="supervisorid" value="<c:out value="${a.supervisorid }}"/>"/>
-		<input type="hidden" name="adminid" value="<c:out value="${a.adminid}"/>"/><br><br>
+		<input type="hidden" name="adminid" value="<c:out value="${a.adminid}"/>"/><br><br>--->
 		
 
 		

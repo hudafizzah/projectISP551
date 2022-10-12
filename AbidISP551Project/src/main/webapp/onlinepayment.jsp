@@ -146,6 +146,7 @@ input[type=button], input[type=submit] {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius:20px;
 }
 input[type=file]{
 color:blue;
@@ -160,6 +161,7 @@ input[type=button], input[type=reset]{
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius:20px;
 }
 .box {
   position: absolute;
@@ -258,13 +260,13 @@ input[type=button], input[type=reset]{
 		
 		<tr>
 			<td id="col-span-25">Payment Date</td>
-			<td id="col-span-75">:&nbsp;<input id = "currentDate" type="date" name="payment_date"></td>
+			<td id="col-span-75">:&nbsp;<input id = "currentDate" type="date" name="payment_date" required></td>
 		</tr>
 		
 		<tr>
 			<td id="col-span-25">Payment Amount</td>
 			<td>
-			            <select name="payment_amount">
+			            <select name="payment_amount" required>
 							<option value="5">Monthly Payment (RM5)</option>
 							<option value="60">Yearly Payment (RM60)</option>
 						</select>
@@ -272,15 +274,15 @@ input[type=button], input[type=reset]{
 		</tr>
 		
 		<tr>
-			<td id="col-span-25">Transactionid</td>
+			<td id="col-span-25">Transaction id</td>
 			<td id="col-span-75">
-			<input type="text" name="transactionid">
+			<input type="text" name="transactionid" required>
 			</td>
 		</tr>
 		<tr>
 			<td id="col-span-25">Bank Name</td>
 			<td id="col-span-75">:&nbsp;
-			<input type="text" name="bankname">
+			<input type="text" name="bankname" required>
 			</td>
 			
 		</tr>

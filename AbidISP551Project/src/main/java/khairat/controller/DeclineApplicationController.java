@@ -20,14 +20,16 @@ public class DeclineApplicationController extends HttpServlet {
         super();
         dao = new DaoKhairat();
     }
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		Claimkhairat c = new Claimkhairat();
-		HttpSession session = request.getSession();
-		c.setAdminid((int)session.getAttribute("currentSessionUser"));
-		dao.declineApplication(c);
-		
-		RequestDispatcher view = request.getRequestDispatcher("listapplicationclaim.jsp");
-		view.forward(request, response);
-	}
 
+	 protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 Claimkhairat c = new Claimkhairat();
+		 HttpSession session = request.getSession();
+			c.setAdminid((int)session.getAttribute("currentSessionUser"));
+			c.setApplicationid(Integer.parseInt(request.getParameter("applicationid")));
+			dao.declineApplication(c);
+			
+			request.setAttribute("claimkhairat", DaoKhairat.getAllAppClaim());
+	        RequestDispatcher view = request.getRequestDispatcher("listapplicationclaim.jsp");
+	        view.forward(request, response);
+	 }	 
 }

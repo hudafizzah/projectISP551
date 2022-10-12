@@ -258,7 +258,7 @@ th {
               
               <div class="nav-links">
                 <a href="ManageProfileSupervisorController">Manage Profile</a>  
-                <a href="createadmin.jsp">Register New Admin</a><br>
+                <a href="createadmin.jsp">Register New Admin</a>
                 <a href="LogoutAdminController">Logout</a> 
                 <a href= "ViewSupervisorController">Back</a>
                 <a></a>

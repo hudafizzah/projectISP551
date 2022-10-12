@@ -169,6 +169,7 @@ input[type=button], input[type=submit] {
   text-decoration: none;
   margin: 5px 2px;
   cursor: pointer;
+  border-radius:10px;
 }
 
 
@@ -180,6 +181,7 @@ input[type=button], input[type=reset]{
   text-decoration: none;
   margin: 5px 2px;
   cursor: pointer;
+  border-radius:10px;
 }
 .col-span-25{
 	float:left;
@@ -226,7 +228,7 @@ input[type=button], input[type=reset]{
                 <a href= "ListMemberController">List Member</a>  
                 <a href= "ListPaymentController">List Online Payment</a> 
                 <a href="ListPaymentController2">List Cash Payment</a>
-                <a href="ListClaimController">List of Application Claim</a>
+                <a href="ListClaimController">List Application Claim</a>
                 <a href="LogoutAdminController">Logout</a> 
                 <a href = "ViewAdminController2">BACK</a>
                 <a></a>
@@ -275,7 +277,7 @@ input[type=button], input[type=reset]{
 			</tbody>
 		</table>
 		
-		<input  type="submit" value= "submit">
+		<input type="submit" value= "submit">
         <input type="reset"  value = "reset">
 	</form>
 </body>

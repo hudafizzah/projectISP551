@@ -172,7 +172,6 @@ button{
 
 
 table {
-  border-collapse: collapse;
   background-color: white;
   overflow: hidden;
   width: %;
@@ -197,7 +196,7 @@ th {
 }
 
 .btn-delete{
-  background-color: #d6524b;
+  background-color:#228b22 ;
   color: white;
   cursor: pointer;
   padding: 10px 20px;
@@ -241,22 +240,23 @@ margin-bottom: 10px;
                 <a href= "createmember.jsp">Register New Member</a>  
                 <a href= "ListMemberController">List Member</a>  
                 <a href= "ListPaymentController">List Online Payment</a> 
-                <a href="ListClaimController">List of Application Claim</a>
+                <a href="ListClaimController">List Application Claim</a>
                 <a href="LogoutAdminController">Logout </a>  
                 <a href= "ViewAdminController2">Back</a>   
                 <a></a>
                 <a></a>
                 </div>
                 </div>
-     <form style="padding:50px 50px 50px 50px; text-align:center;">
+     <form style="padding:50px 50px 50px 350px; text-align:center;">
 	<table border="1">
 		<tr>
 			<th>Payment id</th>
 			<th>Date</th>
 			<th>Amount</th>
 			<th>Member ID</th>
+			<th>Payment Made To</th>
 			<th>Action</th>
-			 <th colspan="10">Action</th>
+		     <!--  <th colspan="10">Action</th>--->
 		</tr>
 		<c:forEach items ="${payment}" var="p">
 			<tr>
@@ -264,6 +264,7 @@ margin-bottom: 10px;
 				<td><c:out value="${p.payment_date}"/></td>
 				<td><c:out value="RM${p.payment_amount}"/></td>
 				<td><c:out value="${p.memberid}"/></td>
+				<td><c:out value="${p.adminname}"/></td>
 				<td><a class="btn-delete" href="DeleteCashPaymentController?paymentid=<c:out value="${p.paymentid}"/>"onclick= "confirmation(this.id)">Payment receive</a></td>
 			
 		</tr>
@@ -275,10 +276,10 @@ margin-bottom: 10px;
 		<script>
 		function confirmation(id) {
 			console.log(id);
-			var r = confirm("Are you sure you want to delete?");
+			var r = confirm("Are you sure payment have been received?");
 			if (r == true) {
 				location.href = 'DeleteCashPaymentController?paymentid=' + id;
-				alert("Cash Payment successfully deleted");
+				alert("Cash Payment successfully received");
 			} else {
 				return false;
 			}

@@ -146,6 +146,7 @@ input[type=button], input[type=submit] {
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius:20px;
 }
 
 input[type=button], input[type=reset]{
@@ -156,6 +157,7 @@ input[type=button], input[type=reset]{
   text-decoration: none;
   margin: 4px 2px;
   cursor: pointer;
+  border-radius:20px;
 }
 table {
 
