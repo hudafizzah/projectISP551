@@ -150,5 +150,6 @@ flex-flow: row wrap;}
 	<iframe src="receiptimg/<c:out value="${p.payment_receipt}"/>" width="100%" height="500px"></iframe>
 	
 	 <footer class="footer bg-theme"><p class="m-0 text-center text-white"><b>Copyright &copy; E-Khairat 2022</b></p></footer>	
+	 
 </body>
 </html>
